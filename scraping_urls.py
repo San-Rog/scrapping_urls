@@ -21,17 +21,14 @@ def get_driver():
         options=options
     )
 
-def main():
+driver = get_driver()
     if st.button("Scrapping"):
-        try:
-            time.sleep(3)
-            texto_da_pagina = driver.find_element(By.TAG_NAME, "body").text
-            st.write(texto_da_pagina)
-            driver.quit()    
-        except Exception as fail:
-            st.write(fail)
+        driver = get_driver()
+        driver.get("https://www.tjma.jus.br/")
+        time.sleep(5)
+        texto_da_pagina = driver.find_element(By.TAG_NAME, "body").text
+        st.write(texto_da_pagina)
+    driver.quit()
 
 if __name__ == '__main__':
-    global driver
-    driver = get_driver()
     main()
