@@ -25,10 +25,13 @@ def main():
     driver = get_driver()
     driver.set_page_load_timeout(10) 
     if st.button("Scrapping"):
-        driver.get("https://www.tjma.jus.br/")
-        time.sleep(3)
-        texto_da_pagina = driver.find_element(By.TAG_NAME, "body").text
-        st.write(texto_da_pagina)
+        try:
+            driver.get("https://www.tjma.jus.br/")
+            time.sleep(3)
+            texto_da_pagina = driver.find_element(By.TAG_NAME, "body").text
+            st.write(texto_da_pagina)
+        except Exception as fail:
+            st.write(fail)
         driver.quit()      
  
 if __name__ == '__main__':
