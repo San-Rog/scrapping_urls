@@ -24,7 +24,6 @@ def get_driver():
 def main():
     driver = get_driver()
     if st.button("Scrapping"):
-        driver = get_driver()
         driver.implicitly_wait(5) 
         driver.get("https://www.tjma.jus.br/")
         time.sleep(3)
