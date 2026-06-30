@@ -28,7 +28,7 @@ driver = get_driver()
         time.sleep(5)
         texto_da_pagina = driver.find_element(By.TAG_NAME, "body").text
         st.write(texto_da_pagina)
-    driver.quit()
+        driver.quit()
 
 if __name__ == '__main__':
     main()
