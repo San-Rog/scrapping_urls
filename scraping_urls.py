@@ -22,16 +22,15 @@ def get_driver():
     )
 
 def main():
-    try:
-        if st.button("Scrapping"):
-            try:                
-                driver.get("https://www.tjma.jus.br/")
-                time.sleep(3)
-                texto_da_pagina = driver.find_element(By.TAG_NAME, "body").text
-                st.write(texto_da_pagina)
-                driver.quit()    
-            except Exception as fail:
-                st.write(fail)
+    if st.button("Scrapping"):
+        try:                
+            driver.get("https://www.tjma.jus.br/")
+            time.sleep(3)
+            texto_da_pagina = driver.find_element(By.TAG_NAME, "body").text
+            st.write(texto_da_pagina)
+            driver.quit()    
+        except Exception as fail:
+            st.write(fail)
 
 if __name__ == '__main__':
     global driver
