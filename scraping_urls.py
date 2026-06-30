@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.core.driver_cache import DriverCacheManager
+from webdriver_manager.core.os_manager import ChromeType
 
 st.title("🌐 Streamlit + Selenium Web Scraper")
 
@@ -24,11 +24,17 @@ def get_driver():
         options=options
     )
 
-driver = get_driver()
-if st.button("Scrapping"):
-    driver.get("https://www.tjma.jus.br/")
-    time.sleep(3)
-    texto_da_pagina = driver.find_element(By.TAG_NAME, "body").text
-    st.write(texto_da_pagina)
-if st.button("close"):
-    driver.quit() 
+def main():
+    driver = get_driver()
+    if st.button("Scrapping"):
+        driver = get_driver()
+        driver.implicitly_wait(5) 
+        driver.get("https://www.tjma.jus.br/")
+        time.sleep(3)
+        texto_da_pagina = driver.find_element(By.TAG_NAME, "body").text
+        st.write(texto_da_pagina)
+    if st.button("close"):
+        driver.quit()      
+ 
+ if __name__ == '__main__':
+     main()
