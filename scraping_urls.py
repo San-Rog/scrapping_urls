@@ -24,8 +24,7 @@ def get_driver():
 def main():
     try:
         if st.button("Scrapping"):
-            try:
-                driver = get_driver()
+            try:                
                 driver.get("https://www.tjma.jus.br/")
                 time.sleep(3)
                 texto_da_pagina = driver.find_element(By.TAG_NAME, "body").text
@@ -35,4 +34,6 @@ def main():
                 st.write(fail)
 
 if __name__ == '__main__':
-     main()
+    global driver
+    driver = get_driver()
+    main()
