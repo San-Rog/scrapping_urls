@@ -27,7 +27,7 @@ def main():
             time.sleep(3)
             texto_da_pagina = driver.find_element(By.TAG_NAME, "body").text
             st.write(texto_da_pagina)
-            #driver.quit()    
+            driver.quit()    
         except Exception as fail:
             st.write(fail)
 
