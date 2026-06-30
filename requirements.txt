@@ -1,4 +1,4 @@
-selenium==4.32.0
+selenium>=4.32.0
 webdriver-manager==4.0.2
 streamlit==1.58.0
 
