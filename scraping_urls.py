@@ -24,7 +24,7 @@ def main():
         driver = get_driver()
         driver.get("https://www.tjma.jus.br/")
         time.sleep(5)
-        driver.refresh()
+        #driver.refresh()
         links = driver.find_elements(By.TAG_NAME, "a")
         for link in links:
             url = link.get_attribute("href")
