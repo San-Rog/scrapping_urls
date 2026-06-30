@@ -32,5 +32,5 @@ def main():
         st.write(texto_da_pagina)
         driver.quit()      
  
- if __name__ == '__main__':
+if __name__ == '__main__':
      main()
