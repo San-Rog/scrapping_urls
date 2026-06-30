@@ -21,13 +21,14 @@ def get_driver():
         options=options
     )
 
-if st.button("Scrapping"):
-    driver = get_driver()
-    driver.get("https://www.tjma.jus.br/")
-    time.sleep(5)
-    texto_da_pagina = driver.find_element(By.TAG_NAME, "body").text
-    st.write(texto_da_pagina)
-    driver.quit()
+def main():
+    if st.button("Scrapping"):
+        driver = get_driver()
+        driver.get("https://www.tjma.jus.br/")
+        time.sleep(5)
+        texto_da_pagina = driver.find_element(By.TAG_NAME, "body").text
+        st.write(texto_da_pagina)
+        driver.quit()
 
 if __name__ == '__main__':
     main()
