@@ -21,24 +21,19 @@ def get_driver():
     
 def main():
     if st.button("Scrapping Texto"):
-        driver = get_driver()
         try:
-            st.session_state['cont'] += 1
-            if st.session_state['cont'] == 1:
-                driver.get("https://www.tjma.jus.br/")
+            driver = get_driver()
+            driver.get("https://www.tjma.jus.br/")
             time.sleep(5)
             driver.refresh()
             textPages = driver.find_element(By.TAG_NAME, "body").text
             st.write(textPages)
-        finally:
-            pass
-            #driver.quit()  
+        except Exception as error:
+            st.write(error)    
     if st.button("Scrapping Links"):
-        driver = get_driver()
         try:
-            st.session_state['cont'] += 1
-            if st.session_state['cont'] == 1:
-                driver.get("https://www.tjma.jus.br/")
+            driver = get_driver()
+            driver.get("https://www.tjma.jus.br/")
             time.sleep(5)
             driver.refresh()
             links = driver.find_elements(By.TAG_NAME, "a")
@@ -46,17 +41,13 @@ def main():
                 url = link.get_attribute("href")
                 if url:
                     st.write(url)
-        finally:
-            pass
-            #driver.quit()  
+         except Exception as error:
+            st.write(error)
     if st.button('close'): 
         try:
            driver.quit()
         except:
             pass
-    st.write(st.session_state['cont'])
  
-if __name__ == '__main__':
-    if 'cont' not in st.session_state:
-        st.session_state['cont'] = 0
+if __name__ == '__main__':   
     main()
