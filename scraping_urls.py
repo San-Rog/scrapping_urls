@@ -21,28 +21,22 @@ def get_driver():
     
 def main():
     if st.button("Scrapping Texto"):
-        try:
-            driver = get_driver()
-            driver.get("https://www.tjma.jus.br/")
-            time.sleep(5)
-            driver.refresh()
-            textPages = driver.find_element(By.TAG_NAME, "body").text
-            st.write(textPages)
-        except Exception as error:
-            st.write(error)    
+        driver = get_driver()
+        driver.get("https://www.tjma.jus.br/")
+        time.sleep(5)
+        driver.refresh()
+        textPages = driver.find_element(By.TAG_NAME, "body").text
+        st.write(textPages)        
     if st.button("Scrapping Links"):
-        try:
-            driver = get_driver()
-            driver.get("https://www.tjma.jus.br/")
-            time.sleep(5)
-            driver.refresh()
-            links = driver.find_elements(By.TAG_NAME, "a")
-            for link in links:
-                url = link.get_attribute("href")
-                if url:
-                    st.write(url)
-        except Exception as error:
-            st.write(error)
+        driver = get_driver()
+        driver.get("https://www.tjma.jus.br/")
+        time.sleep(5)
+        driver.refresh()
+        links = driver.find_elements(By.TAG_NAME, "a")
+        for link in links:
+             url = link.get_attribute("href")
+            if url:
+                st.write(url)
     if st.button('close'): 
         try:
            driver.quit()
