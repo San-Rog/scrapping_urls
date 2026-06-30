@@ -41,7 +41,7 @@ def main():
                 url = link.get_attribute("href")
                 if url:
                     st.write(url)
-         except Exception as error:
+        except Exception as error:
             st.write(error)
     if st.button('close'): 
         try:
