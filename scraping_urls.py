@@ -23,6 +23,7 @@ def get_driver():
 
 def main():
     driver = get_driver()
+    driver.set_page_load_timeout(10) 
     if st.button("Scrapping"):
         driver.get("https://www.tjma.jus.br/")
         time.sleep(3)
