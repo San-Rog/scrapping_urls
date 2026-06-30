@@ -34,6 +34,6 @@ if __name__ == '__main__':
     st.title("🌐 Streamlit + Selenium Web Scraper")
     driver = get_driver()
     if st.button("Scrapping"):
-        main(drive)
+        main(driver)
     if st.button("close"):
         driver.quit()    
