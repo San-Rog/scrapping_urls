@@ -1,6 +1,7 @@
 import time
 import streamlit as st
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
@@ -23,17 +24,10 @@ def get_driver():
         options=options
     )
 
-driver = get_driver()
-
-if st.button("Scrape Target Page"):
-    with st.spinner("Fetching data..."):
-        try:
-            driver.get("https://www.tjma.jus.br")
-            page_title = driver.title
-            st.success(f"Successfully scraped! Page Title: {page_title}")
-            
-            # Display target element content
-            st.write(driver.page_source[:500]) 
-        except Exception as e:
-            st.error(f"An error occurred: {e}")
-    
+if st.button("Scrapping"):
+    driver = get_driver()
+    driver.get("https://www.tjma.jus.br/")
+    time.sleep(3)
+    texto_da_pagina = driver.find_element(By.TAG_NAME, "body").text
+    st.write(texto_da_pagina)
+    driver.quit() 
