@@ -20,16 +20,12 @@ def get_driver():
     )
     
 def main():
-    if st.button("Scrapping Links"):
+    if st.button("Scrapping Texto"):
         driver = get_driver()
         driver.get("https://www.tjma.jus.br/")
-        time.sleep(5)
-        #driver.refresh()
-        links = driver.find_elements(By.TAG_NAME, "a")
-        for link in links:
-            url = link.get_attribute("href")
-            if url:
-                st.write(url)
+        time.sleep(5)        
+        textPages = driver.find_element(By.TAG_NAME, "body").text
+        st.write(textPages)
  
 if __name__ == '__main__':   
     main()
