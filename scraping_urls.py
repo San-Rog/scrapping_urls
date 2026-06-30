@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
-rom webdriver_manager.core.driver_cache import DriverCacheManager
+from webdriver_manager.core.driver_cache import DriverCacheManager
 
 st.title("🌐 Streamlit + Selenium Web Scraper")
 
