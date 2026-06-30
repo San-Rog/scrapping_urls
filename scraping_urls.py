@@ -21,19 +21,16 @@ def get_driver():
         options=options
     )
 
-def main(driver):
+def main():
+    driver = get_driver()
     if st.button("Scrapping"):
-        driver = get_driver()        
+        driver = get_driver()
+        driver.implicitly_wait(5) 
         driver.get("https://www.tjma.jus.br/")
         time.sleep(3)
         texto_da_pagina = driver.find_element(By.TAG_NAME, "body").text
         st.write(texto_da_pagina)
+        driver.quit()      
  
-if __name__ == '__main__':
-    st.cache_data.clear()
-    st.title("🌐 Streamlit + Selenium Web Scraper")
-    driver = get_driver()
-    if st.button("Scrapping"):
-        main(driver)
-    if st.button("close"):
-        driver.quit()    
+ if __name__ == '__main__':
+     main()
