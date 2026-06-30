@@ -8,8 +8,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core.os_manager import ChromeType
 
 st.title("🌐 Streamlit + Selenium Web Scraper")
-
-# Cache the driver setup to prevent re-downloading on every user interaction
 @st.cache_resource
 def get_driver():
     options = Options()
@@ -36,4 +34,5 @@ def main():
         driver.quit()      
  
 if __name__ == '__main__':
-     main()
+    st.cache_data.clear()
+    main()
